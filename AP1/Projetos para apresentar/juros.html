@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <title>Juros</title>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
 
     <style>
@@ -34,12 +33,12 @@
             background: #00333a;
         }
 
-        #jc {
+        #jc_container {
             display: none;
         }
 
-        #js,
-        #jc {
+        #js_container,
+        #jc_container {
             width: 400px;
             text-align: center;
 
@@ -81,16 +80,14 @@
             outline: none;
             cursor: pointer;
             margin: 20px 0px;
+            border-bottom: 3px solid #0e7c82;
+            border-radius: 0px 0px 5px 5px;
         }
 
         button:hover {
             background: #0e7c82;
         }
-
-        .oculto {
-            display: none;
-        }
-
+        
         #jsResultadoJuros,
         #jsResultadoMontante,
         #jcResultadoJuros,
@@ -134,7 +131,7 @@
                 <a class="jc" href="#">JUROS COMPOSTOS</a>
             </div>
 
-            <div id="js">
+            <div id="js_container">
                 <h1>JUROS SIMPLES</h1>
                 <table>
                     <tr>
@@ -154,14 +151,14 @@
                     </tr>
                 </table>
 
-                <button class="Calcular btn">CALCULAR <span class="oculto">js</span></button>
+                <button id='js' class="btn">CALCULAR</button>
 
                 <div id="jsResultadoJuros">Juros: </div><br>
                 <div id="jsResultadoMontante">aplicação final: </div>
             </div>
 
 
-            <div id="jc">
+            <div id="jc_container">
                 <h1>JUROS COMPOSTO</h1>
                 <table>
                     <tr>
@@ -181,7 +178,7 @@
                     </tr>
                 </table>
 
-                <button class="Calcular btn btn-primary">CALCULAR <span class="oculto">jc</span></button>
+                <button id='jc' class="btn">CALCULAR</button>
 
                 <div id="jcResultadoJuros">Juros: </div><br>
                 <div id="jcResultadoMontante">Aplicação final: </div>
@@ -190,7 +187,7 @@
     </div>
 
 
-    <script>
+    <script>        
         $('.jc').click(function () {
             ligado = 'jc';
             desligado = 'js';
@@ -204,32 +201,27 @@
         });
 
         function ativarCampos(lig, desl){
-            $('#'+lig).css('display', 'block');
-            $('.'+lig).css('background-color', '#0db6bf');
+            $('.' + lig).css('background-color', '#0db6bf');
+            $('.' + desl).css('background-color', '#074e66');
             
-            $('#'+desl).css('display', 'none');
-            $('.'+desl).css('background-color', '#074e66');
+            $('#' + lig  + '_container').css('display', 'block');
+            $('#' + desl + '_container').css('display', 'none');
         }
 
         // FUNÇÃO QUE RECEBE OS CLIQUES
-        $('.Calcular').click(function () {
-            if ($(this).html() == 'CALCULAR <span class="oculto">js</span>') {
-                var definidor = '#js';
-            } else {
-                var definidor = '#jc';
-            }
-
+        $('button').click(function(){
+            var definidor = '#' + $(this).attr('id');
             calcular(definidor);
         });
-
+        
         // BUSCAR INFORMAÇÕES - CALCULAR
         function calcular(definidor) {
             // NAO MODIFIQUE
             var cap = definidor + 'Capital';
             var tax = definidor + 'Taxa';
             var tem = definidor + 'Tempo';
-            var rj = definidor + 'ResultadoJuros';
-            var rm = definidor + 'ResultadoMontante';
+            var rj  = definidor + 'ResultadoJuros';
+            var rm  = definidor + 'ResultadoMontante';
 
             var capital = $(cap).val();
             var taxa = $(tax).val();
@@ -272,8 +264,8 @@
             montante = montante.toFixed(2).replace('.', ',');
             juros = juros.toFixed(2).replace('.', ',');
 
-            $(rj).html("Juros: " + juros);
-            $(rm).html("Aplicação Final: " + montante);
+            $(rj).html("Juros: R$ " + juros);
+            $(rm).html("Aplicação Final: R$ " + montante);
         }
     </script>
 
