@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Notas</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.0.0.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.deep_purple-cyan.min.css" />
 
     <style>
+        *{font-size: 12pt;}
         .center{justify-content: center;}
         .text-center{text-align: center;}
         .text-right{text-align: right;}
@@ -32,33 +32,23 @@
             text-align: center;
         }
 
-        .situacao{
-            padding: 15px;
-            background: #eee;
-            border-radius: 20px; 
-        }
-
-        .aprovado{
-            padding: 15px 27px;
-            background: #27AE60;
-            color: #fff;
-        }
-
-        .recuperacao{
-            background: #F1C40F;
-            color: #333;
-        }
-
+        .aprovado,
+        .recuperacao,
         .reprovado{
-            background: #E74C3C;
             color: #fff;
+            padding: 10px;
+            border-radius: 5px;
         }
 
-        .mdl-textfield__input{width: 110px;}
+        .aprovado{background: #27AE60;}
+        .recuperacao{background: #F1C40F;}
+        .reprovado{background: #E74C3C;}
 
-        .mdl-textfield{width: 125px;}
+        .mdl-textfield{width: 110px;}
 
-        .page-content{background: #eaeaea;}
+        .mdl-data-table{width: 700px;}
+
+        .page-content{background: #fbfbfb;}
     </style>
 </head>
 
@@ -92,10 +82,10 @@
                         <tbody>
                             <tr>
                                 <td>EDUARDO MARQUES</td>
-                                <td class="center"><span id="eduardo" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_eduardo" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input eduardo" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input id="eduardo" class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -103,10 +93,10 @@
                             </tr>
                             <tr>
                                 <td>KARINA MAGNUS</td>
-                                <td class="center"><span id="karina" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_karina" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input karina" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input class="mdl-textfield__input" id="karina" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -114,10 +104,10 @@
                             </tr>
                             <tr>
                                 <td>FERNANDO PAULO</td>
-                                <td class="center"><span id="fernando" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_fernando" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input fernando" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input class="mdl-textfield__input" id="fernando" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -125,10 +115,10 @@
                             </tr>
                             <tr>
                                 <td>GUILHERME DA LUZ</td>
-                                <td class="center"><span id="guilherme" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_guilherme" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input guilherme" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input class="mdl-textfield__input" id="guilherme" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -136,10 +126,10 @@
                             </tr>
                             <tr>
                                 <td>BEATRIZ AMARAL</td>
-                                <td class="center"><span id="beatriz" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_beatriz" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input beatriz" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input class="mdl-textfield__input" id="beatriz" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -147,10 +137,10 @@
                             </tr>
                             <tr>
                                 <td>LUIZ RODRIGO</td>
-                                <td class="center"><span id="luiz" class="situacao">em aguardo</span></td>
+                                <td class="center"><span id="status_luiz" class="situacao">em aguardo</span></td>
                                 <td>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                        <input class="mdl-textfield__input luiz" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
+                                        <input class="mdl-textfield__input" id="luiz" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="sample4">
                                         <label class="mdl-textfield__label" for="sample4">Média</label>
                                         <span class="mdl-textfield__error">Isso não é um número!</span>
                                     </div>
@@ -175,64 +165,28 @@
 
 
     <script>
-        $('.eduardo').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#eduardo');
-
-            calcularMedia(campo, media);
-        });
-
-        $('.karina').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#karina');
-
-            calcularMedia(campo, media);
-        });
-
-        $('.fernando').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#fernando');
-
-            calcularMedia(campo, media);
-        });
-
-        $('.guilherme').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#guilherme');
-
-            calcularMedia(campo, media);
-        });
-
-        $('.beatriz').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#beatriz');
-
-            calcularMedia(campo, media);
-        });
-
-        $('.luiz').change(function () {
-            media = $(this);
-            media = parseFloat(media.val());
-            campo = $('#luiz');
+        $('input').change(function(){
+            aluno = $(this).attr('id');
+            media = parseFloat($(this).val());
+            campo = $('#status_' + aluno);
 
             calcularMedia(campo, media);
         });
 
         function calcularMedia(campo, media) {
+            classes = $(campo).attr('class');
             if (media >= 6) {
+                campo.removeClass(classes);
                 campo.addClass('aprovado');
                 campo.html('Aprovado');
             } else if (media >= 4 && media < 6) {
+                campo.removeClass(classes);                
                 campo.addClass('recuperacao');
                 campo.html('Recuperação');
             } else {
+                campo.removeClass(classes);                
                 campo.addClass('reprovado');
-                campo.html('Recuperação');
+                campo.html('Reprovado');
             }
         }
     </script>
