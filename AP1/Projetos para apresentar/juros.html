@@ -50,6 +50,7 @@
             font-size: 18pt;
             font-weight: 300;
             margin-bottom: 30px;
+            color: #0e7c82;
         }
 
         table {
@@ -64,12 +65,12 @@
             width: 110px;
             padding: 7px;
             text-align: right;
-            border: 1px solid #888;
+            border: 1px solid #bbb;
             outline: none;
         }
 
         input[type='text']:focus {
-            border: 1px solid #0e7c82;
+            border: 1px solid #34adb4;
         }
 
         button {
@@ -81,7 +82,7 @@
             cursor: pointer;
             margin: 20px 0px;
             border-bottom: 3px solid #0e7c82;
-            border-radius: 0px 0px 5px 5px;
+            border-radius: 5px;
         }
 
         button:hover {
@@ -217,25 +218,12 @@
         // BUSCAR INFORMAÇÕES - CALCULAR
         function calcular(definidor) {
             // NAO MODIFIQUE
-            var cap = definidor + 'Capital';
-            var tax = definidor + 'Taxa';
-            var tem = definidor + 'Tempo';
+            capital = parseFloat($(definidor + 'Capital').val().replace(',', '.'));
+            taxa = parseFloat($(definidor + 'Taxa').val().replace(',', '.')) / 100;
+            tempo = parseFloat($(definidor + 'Tempo').val().replace(',', '.'));
+
             var rj  = definidor + 'ResultadoJuros';
             var rm  = definidor + 'ResultadoMontante';
-
-            var capital = $(cap).val();
-            var taxa = $(tax).val();
-            var tempo = $(tem).val();
-
-            capital = capital.replace(',', '.');
-            taxa = taxa.replace(',', '.');
-            tempo = tempo.replace(',', '.');
-
-            capital = parseFloat(capital);
-            taxa = parseFloat(taxa);
-            tempo = parseFloat(tempo);
-
-            taxa = (taxa / 100);
 
             if (definidor == '#js') {
                 calcularJurosSimples(capital, taxa, tempo, rj, rm);
